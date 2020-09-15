@@ -81,8 +81,6 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
 
     protected open fun onFetchFailed() {}
 
-    fun asLiveData() = result as LiveData<Resource<ResultType>>
-
     @WorkerThread
     protected open fun processResponse(response: ApiSuccessResponse<RequestType>) = response.body
 
