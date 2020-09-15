@@ -11,12 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.NavHostFragment
 import com.github.yangweigbh.modern_android_template.R
+import com.github.yangweigbh.modern_android_template.weather.data.Resource
 import com.github.yangweigbh.modern_android_template.weather.data.WeatherData
-import com.github.yangweigbh.modern_android_template.weather.data.WeatherDataSource
-import com.github.yangweigbh.modern_android_template.weather.data.WeatherDataSourceImpl
-import com.github.yangweigbh.modern_android_template.weather.data.WeatherRepository
 import com.github.yangweigbh.modern_android_template.weather.viewmodel.HomeViewModel
-import com.github.yangweigbh.modern_android_template.weather.viewmodel.HomeViewModelFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,16 +24,7 @@ import javax.inject.Inject
  */
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-    @Inject
-    lateinit var viewModeFactory: HomeViewModelFactory
-
-    private val viewModel: HomeViewModel by viewModels {
-        viewModeFactory
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,8 +48,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun display(view: View, result: List<WeatherData>) {
-        view.findViewById<TextView>(R.id.text_view).setText(result.joinToString("\n"))
+    private fun display(view: View, result: Resource<List<WeatherData>>) {
+        view.findViewById<TextView>(R.id.text_view).setText(result.data?.joinToString("\n") ?: "empty result")
     }
 
     override fun onResume() {

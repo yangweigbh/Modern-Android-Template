@@ -9,3 +9,4 @@ Playground for the latest android tech, also serve as my new android project tem
 * MVVM (ViewModel, LiveData)
 * Coroutine
 * Navigation Component
+* Flow
