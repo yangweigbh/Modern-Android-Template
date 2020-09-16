@@ -5,7 +5,7 @@ import Versions.retrofit_version
 import Versions.viewmodel_hilter_version
 
 object Versions {
-    val kotlin = "1.3.72"
+    val kotlin = "1.4.0"
     val ktlint = "0.38.1"
     val detekt = "1.13.0"
     val spotless = "5.5.1"
@@ -14,10 +14,11 @@ object Versions {
     val hilter_version = "2.28-alpha"
     val viewmodel_hilter_version = "1.0.0-alpha01"
     val retrofit_version = "2.9.0"
+    val composeVersion = "1.0.0-alpha01"
 }
 
 object Libs {
-    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     val androidx_core = "androidx.core:core-ktx:1.3.1"
     val appcompat = "androidx.appcompat:appcompat:1.2.0"
     val constraintlayout = "androidx.constraintlayout:constraintlayout:2.0.1"
@@ -30,6 +31,14 @@ object Libs {
     val hilt_lifecycle_viewmodel = "androidx.hilt:hilt-lifecycle-viewmodel:$viewmodel_hilter_version"
     val androidx_hilt_compiler = "androidx.hilt:hilt-compiler:$viewmodel_hilter_version"
     val retrofit = "com.squareup.retrofit2:retrofit:$retrofit_version"
+    val compose_runtime = "androidx.compose.runtime:runtime:${Versions.composeVersion}"
+    val compose_ui = "androidx.compose.ui:ui:${Versions.composeVersion}"
+    val compose_foundation = "androidx.compose.foundation:foundation:${Versions.composeVersion}"
+    val compose_foundation_layout = "androidx.compose.foundation:foundation-layout:${Versions.composeVersion}"
+    val compose_material = "androidx.compose.material:material:${Versions.composeVersion}"
+    val compose_ui_viewbinding = "androidx.compose.ui:ui-viewbinding:${Versions.composeVersion}"
+    val compose_ui_tooling = "androidx.ui:ui-tooling:${Versions.composeVersion}"
+    val compose_runtime_livedata = "androidx.compose.runtime:runtime-livedata:${Versions.composeVersion}"
 }
 
 object TestLibs {

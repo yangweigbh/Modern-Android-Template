@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.NavHostFragment
@@ -15,7 +17,7 @@ import com.github.yangweigbh.modern_android_template.weather.data.Resource
 import com.github.yangweigbh.modern_android_template.weather.data.WeatherData
 import com.github.yangweigbh.modern_android_template.weather.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import androidx.compose.ui.platform.ComposeView
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +33,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return ComposeView(requireContext()).apply {
+            MaterialTheme {
+                val weatherSummary = viewModel.weatherSummary.observeAsState().value
+            }
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

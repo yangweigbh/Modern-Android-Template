@@ -14,12 +14,16 @@ android {
 
     defaultConfig {
         applicationId = "com.github.yangweigbh.modern_android_template"
-        minSdkVersion(16)
+        minSdkVersion(21)
         targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        compose = true
     }
 
     buildTypes {
@@ -36,6 +40,12 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+        useIR = true
+    }
+
+    composeOptions {
+        kotlinCompilerVersion = Versions.kotlin
+        kotlinCompilerExtensionVersion = Versions.composeVersion
     }
 }
 
@@ -52,9 +62,22 @@ dependencies {
     implementation(Libs.hilt_android)
     implementation(Libs.hilt_lifecycle_viewmodel)
     implementation(Libs.retrofit)
+
+    //Compose
+    implementation(Libs.compose_runtime)
+    implementation(Libs.compose_ui)
+    implementation(Libs.compose_foundation)
+    implementation(Libs.compose_foundation_layout)
+    implementation(Libs.compose_material)
+    implementation(Libs.compose_ui_viewbinding)
+    implementation(Libs.compose_ui_tooling)
+    implementation(Libs.compose_runtime_livedata)
+
     kapt(Libs.hilt_android_compiler)
     kapt(Libs.androidx_hilt_compiler)
+
     testImplementation(TestLibs.junit)
+
     androidTestImplementation(TestLibs.androidx_junit)
     androidTestImplementation(TestLibs.androidx_espresso)
 }

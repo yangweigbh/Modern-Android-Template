@@ -16,7 +16,7 @@ class HomeViewModel @ViewModelInject constructor(private val weatherRepository: 
     fun getData() {
         viewModelScope.launch {
             val list = weatherRepository.getWeatherSummary();
-            _weatherSummary.addSource(list.asLiveData()) {
+            _weatherSummary.addSource(list.asLiveData(coroutineContext)) {
                 _weatherSummary.value = it
             }
         }

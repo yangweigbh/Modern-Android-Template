@@ -2,6 +2,11 @@
 Playground for the latest android tech, also serve as my new android project template, will keep it updated
 
 
+# Prerequisites
+
+* Min SDK Version >= 21 (request by Compose)
+* Android Studio version >= 4.2 (request by Compose)
+
 ## Currently Used Tech Stack
 * Gradle Kotlin DSL
 * Kotlin
@@ -10,3 +15,4 @@ Playground for the latest android tech, also serve as my new android project tem
 * Coroutine
 * Navigation Component
 * Flow
+* Compose
