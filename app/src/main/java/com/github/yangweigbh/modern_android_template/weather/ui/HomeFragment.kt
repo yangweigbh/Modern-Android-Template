@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.fragment.app.viewModels
@@ -34,28 +36,22 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return ComposeView(requireContext()).apply {
-            MaterialTheme {
-                val weatherSummary = viewModel.weatherSummary.observeAsState().value
+            setContent {
+                MaterialTheme {
+                    val weatherSummary = viewModel.weatherSummary.observeAsState().value
+
+                    weatherSummary?.data?.let {
+                        Column {
+                            for (i in weatherSummary.data) {
+                                Text(i.toString())
+                            }
+                        }
+                    } ?: Column {
+                        Text("Loading")
+                    }
+                }
             }
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.weatherSummary.observe(viewLifecycleOwner) { result ->
-            display(view, result)
-        }
-
-        view.findViewById<Button>(R.id.button).setOnClickListener {
-            val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
-            val navController = navHostFragment?.navController
-            navController?.navigate(R.id.action_homeFragment_to_detailFragment)
-        }
-    }
-
-    private fun display(view: View, result: Resource<List<WeatherData>>) {
-        view.findViewById<TextView>(R.id.text_view).setText(result.data?.joinToString("\n") ?: "empty result")
     }
 
     override fun onResume() {
