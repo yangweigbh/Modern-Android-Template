@@ -20,6 +20,7 @@ import com.github.yangweigbh.modern_android_template.weather.data.WeatherData
 import com.github.yangweigbh.modern_android_template.weather.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import androidx.compose.ui.platform.ComposeView
+import com.github.yangweigbh.modern_android_template.weather.compose.HomeFragmentContent
 
 /**
  * A simple [Fragment] subclass.
@@ -40,15 +41,7 @@ class HomeFragment : Fragment() {
                 MaterialTheme {
                     val weatherSummary = viewModel.weatherSummary.observeAsState().value
 
-                    weatherSummary?.data?.let {
-                        Column {
-                            for (i in weatherSummary.data) {
-                                Text(i.toString())
-                            }
-                        }
-                    } ?: Column {
-                        Text("Loading")
-                    }
+                    HomeFragmentContent(weatherSummary)
                 }
             }
         }
