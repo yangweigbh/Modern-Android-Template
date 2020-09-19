@@ -22,7 +22,7 @@ fun HomeFragmentContent(weatherSummary: Resource<List<WeatherData>>?, onClick: (
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "LayoutsCodelab")
+                    Text(text = "Modern Android Template")
                 },
                 actions = {
                     IconButton(onClick = { onClick() }) {
