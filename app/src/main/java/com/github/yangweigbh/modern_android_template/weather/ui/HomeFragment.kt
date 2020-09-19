@@ -41,7 +41,11 @@ class HomeFragment : Fragment() {
                 MaterialTheme {
                     val weatherSummary = viewModel.weatherSummary.observeAsState().value
 
-                    HomeFragmentContent(weatherSummary)
+                    HomeFragmentContent(weatherSummary, onClick = {
+                        val navHostFragment = activity?.supportFragmentManager?.findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+                        val navController = navHostFragment?.navController
+                        navController?.navigate(R.id.action_homeFragment_to_detailFragment)
+                    })
                 }
             }
         }
